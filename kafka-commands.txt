@@ -1,0 +1,62 @@
+References
+----------
+https://kafka.apache.org/quickstart
+
+
+// Start Zookeeper
+------------------
+zookeeper-server-start config/zookeeper.properties
+
+// Start Kafka
+--------------
+kafka-server-start config/server.properties
+
+// Create topic
+----------------
+kafka-topics --zookeeper localhost:2181 --topic sample_topic --create --partitions 3 --replication-factor 1
+
+
+// List Kafka Topics
+--------------------
+kafka-topics --list --bootstrap-server localhost:9092
+
+
+// Kafka console producer
+-------------------------
+kafka-console-producer --broker-list localhost:9092 --topic sample_topic
+
+
+// Kafka console consumer
+-------------------------
+kafka-console-consumer --bootstrap-server localhost:9092 --topic sample_topic --property print.key=true --from-beginning
+
+
+// List Consumer groups
+-----------------------
+kafka-consumer-groups --bootstrap-server localhost:9092 --list
+
+
+// Describe a Consumer
+----------------------------
+kafka-consumer-groups --bootstrap-server localhost:9092 --group sample_group --describe
+
+
+// Spring cloud kafka binder properties reference
+---------------------------
+
+https://cloud.spring.io/spring-cloud-stream-binder-kafka/spring-cloud-stream-binder-kafka.html
+
+
+// Create topics for tweets processing
+---------------------------------------
+
+kafka-topics --zookeeper localhost:2181 --topic marvel_dc_tweets --create --partitions 3 --replication-factor 1
+kafka-topics --zookeeper localhost:2181 --topic character_count --create --partitions 3 --replication-factor 1
+kafka-topics --zookeeper localhost:2181 --topic comics_result --create --partitions 3 --replication-factor 1
+
+
+// Apps urls
+-------------
+http://localhost:8086/result
+http://localhost:8085/characterCount
+

@@ -1,0 +1,11 @@
+spring.cloud.stream.bindings.input.destination: sample_topic
+server.port: 8082
+
+
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          consumer-properties:
+            group.id: sample_group
